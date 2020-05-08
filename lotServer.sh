@@ -4,8 +4,8 @@
 #
 # Modified by Aniverse
 
-script_update=2020.04.23
-script_version=r10012
+script_update=2020.05.08
+script_version=r10013
 
 usage_guide() {
     bash <(wget --no-check-certificate -qO- https://github.com/Aniverse/lotServer/raw/master/lotServer.sh) install
@@ -41,8 +41,8 @@ function acce_check() {
 }
 
 function generate_lic_local() {
-    which php > /dev/null || apt-get install -y php
-    which php > /dev/null || yum install -y php
+    which php > /dev/null || apt-get install -y php-cli
+    which php > /dev/null || yum install -y php-cli
     which php > /dev/null || Uninstall "Error! No php found"
     which git > /dev/null || apt-get install -y git
     which php > /dev/null || yum install -y git
@@ -60,7 +60,7 @@ function generate_lic() {
     acce_ver=$(acce_check ${KNV})
 
     # [[ $(which php) ]] && Lic=local
-    [[ -z $Lic ]] && Lic=c
+    [[ -z $Lic ]] && Lic=a
     [[ $Lic == a ]] && LicURL="https://api.moeclub.org/lotServer?ver=${acce_ver}&mac=${Mac}" # https://moeclub.azurewebsites.net?ver=${acce_ver}&mac=${Mac}
     # https://github.com/MoeClub/lotServer/compare/master...wxlost:master
     [[ $Lic == b ]] && LicURL="https://118868.xyz/keygen.php?ver=${acce_ver}&mac=${Mac}"
